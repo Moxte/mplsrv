@@ -20,4 +20,7 @@
     "express": "^4.15.3",
     "socket.io": "^2.0.3"
   }
+  "scripts": {
+    "start": "index.js"
+  }
 }
