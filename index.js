@@ -2,7 +2,8 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen(8080);
+server.listen(8080); //8080 //3000
+//ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket
 // global variables for the server
 var enemies = [];
 var playerSpawnPoints = [];
@@ -76,6 +77,7 @@ io.on('connection', function (socket) {
         clients.push(currentPlayer);
         //in your current game, tell you that you have joined
         console.log(currentPlayer.name + ' emit: play: ' + JSON.stringify(currentPlayer));
+        socket.emit('play', currentPlayer);
         //in your current game, we need to tell the other players about you
         socket.broadcast.emit('other player connected', currentPlayer);
 
@@ -135,7 +137,7 @@ io.on('connection', function (socket) {
         console.log(currentPlayer.name + ' recv: disconnect ' + currentPlayer.name);
         socket.broadcast.emit('other player disconnected', currentPlayer);
         console.log(currentPlayer.name + ' bcst: other player disconnected ' + JSON.stringify(currentPlayer));
-        for (var i = 0; i < clients.length; i==) { //mb ++
+        for (var i = 0; i < clients.length; i++) { //mb ++
             if (clients[i].name === currentPlayer.name) {
                 clients.splice(i, 1);
             }
