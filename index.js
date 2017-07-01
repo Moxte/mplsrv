@@ -2,7 +2,7 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen(8080); //8080 //3000
+server.listen(3000); //8080 //3000
 //ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket
 // global variables for the server
 var enemies = [];
