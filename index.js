@@ -1,5 +1,6 @@
 var server = require('ws').Server;
-var s = new server({ port: 3000 });
+var portHRC = process.env.PORT || 5000
+var s = new server({ port: portHRC });
 
 s.on('connection', function (ws) {
     ws.on('message', function (message) {
