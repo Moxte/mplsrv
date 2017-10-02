@@ -1,7 +1,10 @@
+var app = require('express')();
+var server = require('http').Server(app);
 var server = require('ws').Server;
-var s = new server({ port: 3000 });
+server.listen(process.env.PORT || 3000, function () {
+});
 
-s.on('connection', function (ws) {
+server.on('connection', function (ws) {
     ws.on('message', function (message) {
         console.log("Received: " + message);
 
