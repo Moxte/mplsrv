@@ -1,5 +1,5 @@
 {
-  "name": "nodegameserver",
+  "name": "wsserver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,12 +15,5 @@
   "bugs": {
     "url": "https://github.com/Moxte/mplsrv/issues"
   },
-  "homepage": "https://github.com/Moxte/mplsrv#readme",
-  "dependencies": {
-    "express": "^4.15.3",
-    "socket.io": "^2.0.3"
-  },
-  "scripts":{
-    "start": "node index.js"
-  }
+  "homepage": "https://github.com/Moxte/mplsrv#readme"
 }
