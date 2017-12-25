@@ -6,7 +6,7 @@ var clients = [];
 var playerSpawnPoints = [];
 
 s.on('connection', function (ws) {
-
+/*
     ws.on('message', function (message) {
         console.log("Received: " + message);
         message = JSON.parse(message);
@@ -43,4 +43,5 @@ s.on('connection', function (ws) {
             });
         };
     });
+	*/
 });
