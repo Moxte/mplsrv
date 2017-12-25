@@ -1,12 +1,12 @@
 var server = require('ws').Server;
-//var portHRC = process.env.PORT || 5000
-var s = new server({ port: 5000  }); //portHRC
+var portHRC = process.env.PORT || 5000
+var s = new server({ port: portHRC  }); 
 
-//var clients = [];
-//var playerSpawnPoints = [];
+var clients = [];
+var playerSpawnPoints = [];
 
 s.on('connection', function (ws) {
-/*
+
     ws.on('message', function (message) {
         console.log("Received: " + message);
         message = JSON.parse(message);
@@ -43,5 +43,5 @@ s.on('connection', function (ws) {
             });
         };
     });
-	*/
+	
 });
