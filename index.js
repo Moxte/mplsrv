@@ -1,6 +1,18 @@
-var server = require('ws').Server;
-var portHRC = process.env.PORT || 5000
-var s = new server({ port: portHRC  }); 
+'use strict';
+
+const express = require('express');
+const SocketServer = require('ws').Server;
+const path = require('path');
+
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const s = new SocketServer({ server });
+
 
 var clients = [];
 var playerSpawnPoints = [];
@@ -8,11 +20,11 @@ var playerSpawnPoints = [];
 s.on('connection', function (ws) {
 
     ws.on('message', function (message) {
-        console.log("Received: " + message);
+       // console.log("Received: " + message);
         message = JSON.parse(message);
        
         if (typeof message.nv !== 'undefined' && message.nv.length > 0) { 
-            console.log("New player connected " + message.name);
+          //  console.log("New player connected " + message.name);
             var playerConnected = {
                 p: message.p,
                 nv: message.nv
