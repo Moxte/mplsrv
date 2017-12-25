@@ -1,5 +1,5 @@
 var server = require('ws').Server;
-var portHRC = process.env.PORT || 5001 //5000
+var portHRC = process.env.PORT || 5000 //5001
 var s = new server({ port: portHRC });
 
 var clients = [];
