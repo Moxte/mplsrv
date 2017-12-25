@@ -2,8 +2,8 @@ var server = require('ws').Server;
 //var portHRC = process.env.PORT || 5000
 var s = new server({ port: 3000  }); //portHRC
 
-var clients = [];
-var playerSpawnPoints = [];
+//var clients = [];
+//var playerSpawnPoints = [];
 
 s.on('connection', function (ws) {
 /*
