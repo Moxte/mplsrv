@@ -42,7 +42,16 @@ s.on('connection', function (ws) {
                 if (client !== ws) client.send(JSON.stringify(PlayerMoved)); //!==
             });
         }
-
+		//receive and send to all clients except sender player's shooting done
+        else if (typeof message.s !== 'undefined' && message.s.length > 0) {
+            var PlayerShoot = {
+                p: message.p,
+                s: message.s
+            }
+            s.clients.forEach(function (client) {
+                if (client !== ws) client.send(JSON.stringify(PlayerShoot)); //!==
+            });
+        }
 		//receive and send to all clients except sender player's rotation
         else if (typeof message.r !== 'undefined' && message.r.length > 0) {
             var PlayerRotated = {
@@ -54,6 +63,7 @@ s.on('connection', function (ws) {
                 if (client !== ws) client.send(JSON.stringify(PlayerRotated)); //!==
             });
         };
+
     });
 	
 });
