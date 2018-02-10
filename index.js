@@ -24,7 +24,7 @@ s.on('connection', function (ws) {
         message = JSON.parse(message);
        
         if (typeof message.nv !== 'undefined' && message.nv.length > 0) { 
-          //  console.log("New player connected " + message.name);
+            console.log("New player connected " + message.name);
             var playerConnected = {
                 p: message.p,
                 nv: message.nv
@@ -50,6 +50,16 @@ s.on('connection', function (ws) {
             }
             s.clients.forEach(function (client) {
                 if (client !== ws) client.send(JSON.stringify(PlayerShoot)); //!==
+            });
+        }
+		//receive and send to all clients except sender player's gun rotation
+		else if (typeof message.g !== 'undefined' && message.g.length > 0) {
+            var PlayerGunRot = {
+                p: message.p,
+                g: message.g
+            }
+            s.clients.forEach(function (client) {
+                if (client !== ws) client.send(JSON.stringify(PlayerGunRot)); //!==
             });
         }
 		//receive and send to all clients except sender player's rotation
